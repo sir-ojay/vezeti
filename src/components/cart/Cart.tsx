@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { Products } from "../data";
 import cartImage from "../../assets/cart.jpeg";
-
 import AddProduct from "../addproduct/AddProduct";
 import "./cart.css";
 
@@ -11,13 +11,7 @@ export interface Product {
   price: string;
 }
 const Cart = ({ isModal, modal }: { isModal: Boolean; modal: any }) => {
-  const [products, setProducts] = useState<Product[]>([
-    { id: 1, name: "LG TV", img: cartImage, price: "NGN 150,000" },
-    { id: 2, name: "AirPod", img: cartImage, price: "NGN 120,000" },
-    { id: 3, name: "Laptop", img: cartImage, price: "NGN 180,000" },
-    { id: 4, name: "Mac book", img: cartImage, price: "NGN 580,000" },
-    { id: 5, name: "LG Speaker", img: cartImage, price: "NGN 100,000" },
-  ]);
+  const [products, setProducts] = useState<Product[]>([...Products]);
 
   // id, name, price and image.
   const handleAddProduct = (
@@ -36,14 +30,13 @@ const Cart = ({ isModal, modal }: { isModal: Boolean; modal: any }) => {
   };
 
 
-
-
-
-  
+//to remove product
   const handleRemoveProduct = (productId: number) => {
     setProducts(products.filter((product) => product.id !== productId));
   };
 
+
+  //search products
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,10 +47,6 @@ const Cart = ({ isModal, modal }: { isModal: Boolean; modal: any }) => {
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // const addProduct = (newProducts:Product)=>{
-  //   setProducts((previousProducts)=>[...previousProducts,newProducts])
-
-  // }
 
   return (
     <div className="cart_container">
@@ -110,14 +99,6 @@ const Cart = ({ isModal, modal }: { isModal: Boolean; modal: any }) => {
  
       </div>
 
-      {/* <input
-        type="text"
-        placeholder="Enter product name"
-        onChange={(e) => {
-          handleAddProduct(e.target.value);
-          // e.currentTarget.value = "";
-        }}
-      /> */}
     </div>
   );
 };

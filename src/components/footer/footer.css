@@ -1,11 +1,14 @@
 .footer--body {
-  background-color: #054c73;
+  background-color: #054C73;
   display: flex;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
   justify-content: center;
 }
  .footer--text {
     color: white;
     font-size: 16px;
-   padding: 2%;
+   padding: 3%;
    }
 

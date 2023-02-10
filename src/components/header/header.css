@@ -1,10 +1,12 @@
 .header-body {
-    height: 20%;
+    /* height: 20%; */
     background-color: #054C73;
     display: flex;
     justify-content: space-between;
     color: white;
-    padding: 0px 0% 0 5%;
+    width: 100%;
+    padding: 10px 0% 10px 5%;
+
 }
 
 h2 {
