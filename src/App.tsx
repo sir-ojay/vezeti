@@ -8,7 +8,7 @@ import Footer from "./components/footer/footer";
 
 function App() {
  
-  const [isModal, setModal] = useState<Boolean>(true);
+  const [isModal, setModal] =    useState<Boolean>(true);
 
    const modal = () => {
      setModal(!isModal);

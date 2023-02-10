@@ -4,7 +4,7 @@ import cartImage from "../../assets/cart.jpeg";
 import AddProduct from "../addproduct/AddProduct";
 import "./cart.css";
 
-interface Product {
+export interface Product {
   id: number;
   name: string;
   img: string;
@@ -35,6 +35,11 @@ const Cart = ({ isModal, modal }: { isModal: Boolean; modal: any }) => {
     setProducts([...products, newProduct]);
   };
 
+
+
+
+
+  
   const handleRemoveProduct = (productId: number) => {
     setProducts(products.filter((product) => product.id !== productId));
   };
@@ -49,11 +54,18 @@ const Cart = ({ isModal, modal }: { isModal: Boolean; modal: any }) => {
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // const addProduct = (newProducts:Product)=>{
+  //   setProducts((previousProducts)=>[...previousProducts,newProducts])
+
+  // }
+
   return (
     <div className="cart_container">
-      {!isModal && <AddProduct modal={modal} />}
-      {/* <h1>Product List</h1> */}
-
+      {!isModal && <AddProduct
+       handleAddProduct={ handleAddProduct}
+      productId={products.length}
+      productImage = {cartImage}
+      modal={modal} />}
       <input
         type="text"
         placeholder="Search"
@@ -95,20 +107,7 @@ const Cart = ({ isModal, modal }: { isModal: Boolean; modal: any }) => {
             </div>
           ))}
         </div>
-
-        <ul className="remove_cart">
-          {filteredProducts.map((product) => (
-            <li key={product.id}>
-              {/* {product.name}{" "} */}
-              <button
-                className="remove_button"
-                onClick={() => handleRemoveProduct(product.id)}
-              >
-                Remove
-              </button>
-            </li>
-          ))}
-        </ul>
+ 
       </div>
 
       {/* <input
